@@ -9,6 +9,7 @@ var moment=require('moment')
 
 var user=require('./routes/user')
 var task=require('./routes/task')
+var colab=require('./routes/colab')
 
 //middleware for body
 app.use(body.json())
@@ -31,6 +32,7 @@ app.use(passport.session());
 
 app.use('/user',user)
 app.use('/task',task)
+app.use('/colab',colab)
 
 
 

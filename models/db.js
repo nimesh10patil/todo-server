@@ -63,8 +63,16 @@ var taskSchema=new mongoose.Schema({
 
 var Task=mongoose.model('tasks',taskSchema)
 
+//colab
+
+var colabSchema=new mongoose.Schema({
+    users:[String]
+})
+var Colab=new mongoose.model('colabs',colabSchema)
 
 module.exports={
     User:User,
-    Task:Task
+    Task:Task,
+    Colab:Colab
 }
+

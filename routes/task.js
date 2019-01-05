@@ -15,9 +15,7 @@ router.post('/add',function(req,res){
             ntask.title=req.body.title
             ntask.description=req.body.description
             
-            Model.Task.count({userid:req.user._id}, function( err, count){
-                console.log( "Number of users:", count );
-            ntask.priority=count+1
+            ntask.priority=req.body.priority
             ntask.userid=req.user._id
             ntask.assignedto=req.user._id
             ntask.save(function(err,ob){
@@ -26,7 +24,7 @@ router.post('/add',function(req,res){
 
             res.send(ob)
             })
-            })
+
             
 
 
@@ -46,9 +44,20 @@ router.get('/get',function(req,res){
 })
 
 router.put('/edit/:id',function(req,res){
-    Model.Task.findOne({userid:req.user._id},function(err,ob){
+    Model.Task.findById(req.params.id,function(err,ob){
+        ob.title=req.body.title
+        ob.description=req.body.description
+        ob.priority=req.body.priority
+        ob.save(function(errx,obx){
+            res.send(obx)
+        })
 
-        
+})
+})
+
+router.delete('/delete/:id',function(req,res){
+    Model.Task.findByIdAndDelete(req.params.id,function(err,ob){
+res.send(ob)   
 
 })
 })
