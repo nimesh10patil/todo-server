@@ -5,8 +5,10 @@ var path=require('path');
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy;
 var session=require('express-session');
+var moment=require('moment')
 
 var user=require('./routes/user')
+var task=require('./routes/task')
 
 //middleware for body
 app.use(body.json())
@@ -28,5 +30,8 @@ app.use(passport.session());
 
 
 app.use('/user',user)
+app.use('/task',task)
+
+
 
 app.listen(3000)

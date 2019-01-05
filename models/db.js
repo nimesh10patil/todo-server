@@ -1,6 +1,6 @@
 var mongoose=require('mongoose')
 var bcrypt=require('bcrypt-nodejs');
-
+var moment=require('moment')
 
 mongoose.connect('mongodb://localhost/todo')
 
@@ -45,14 +45,11 @@ var taskSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    starttime:{
-        type:Number,
-        required:true 
-    },
-    endtime:{
+    priority:{
         type:Number,
         required:true
     },
+
     adminid:{
         type:String
     },
